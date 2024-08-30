@@ -1,0 +1,27 @@
+# Your Solution
+version: '3'
+services:
+  books-service:
+    build: 
+      context: ./book_catalog 
+      dockerfile: Dockerfile
+    image: books-deployment:1
+    container_name: books-deployment
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+    restart: "no"
+    
+  
+  inventory-service:
+    build:
+      context: ./inventory_management
+      dockerfile: Dockerfile
+    image: inventory-deployment:1
+    container_name: inventory-deployment
+    ports:
+      - "8001:8001"
+    environment:
+      - PORT=8001
+    restart: "no"
